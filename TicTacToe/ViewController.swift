@@ -8,8 +8,29 @@
 
 import UIKit
 
+//Images are in the Assets.xcassets folder!!!
 class ViewController: UIViewController {
 
+    var playerTurn: Bool = true;
+        
+    @IBOutlet weak var showText: UILabel!
+    
+    @IBAction func startAction(_ sender: UIButton) {
+        print("Start button pressed");
+    }
+    
+    @IBAction func buttonPress(_ sender: UIButton) {
+        showText.text = "Button \(sender.tag) pressed"
+        if playerTurn == true {
+            sender.setImage(#imageLiteral(resourceName: "button_x"), for: UIControlState())
+            playerTurn = false;
+        }
+        else {
+            sender.setImage(#imageLiteral(resourceName: "button_o"), for: UIControlState())
+            playerTurn = true;
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
